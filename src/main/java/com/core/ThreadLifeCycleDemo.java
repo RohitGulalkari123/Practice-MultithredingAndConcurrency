@@ -1,4 +1,4 @@
-package org.example;
+package com.core;
 
 public class ThreadLifeCycleDemo {
     static final Object lock = new Object();
