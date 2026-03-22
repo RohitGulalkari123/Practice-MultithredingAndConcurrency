@@ -32,6 +32,7 @@ public class DaemonThread {
             } catch (InterruptedException e) {
             }
         }, "UserWorker");
+
         user.start();
 
         user.join(); // JVM exits after user thread finishes
@@ -39,15 +40,13 @@ public class DaemonThread {
         // daemon thread is killed here — ~3 heartbeats seen
 
         // Demonstrate: setDaemon after start throws exception
-        Thread t = new Thread(() -> {});
+        Thread t = new Thread(() -> {
+        });
         t.start();
         try {
             t.setDaemon(true); // after start -> exception
         } catch (IllegalThreadStateException e) {
             System.out.println("Cannot set daemon after start!");
         }
-
-
     }
-
 }
